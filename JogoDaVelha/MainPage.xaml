@@ -12,11 +12,7 @@
 
 
 
-            <Label
-                x:Name="JogoVelha" 
-                Text="Jogo da Velha"
-                VerticalOptions="Center"
-                />
+
 
 
 
@@ -85,7 +81,12 @@
                     />
 
             </Grid>
-
+            <Label
+                x:Name="JogoVelha" 
+                Text="Jogo da Velha"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />

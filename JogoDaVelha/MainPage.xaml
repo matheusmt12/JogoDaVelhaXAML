@@ -85,19 +85,6 @@
 
             </Grid>
 
-
-
-
-
-
-
-
-
-
-
-
-            <Label x:Name="teste"/>
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -117,6 +104,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn00"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="0"
@@ -124,6 +112,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn01"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="0"
@@ -131,6 +120,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn02"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="1"
@@ -138,6 +128,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn10"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="1"
@@ -145,6 +136,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn11"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="1"
@@ -152,6 +144,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn12"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="2"
@@ -159,6 +152,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn20"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="2"
@@ -166,6 +160,7 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn21"
+                    Clicked="btn00_Click"
                     />
                 <Button
                     Grid.Row="2"
@@ -173,11 +168,18 @@
                     Text=" "
                     BackgroundColor="Blue"
                     x:Name="btn22"
+                    Clicked="btn00_Click"
                     />
             </Grid>
 
 
 
+            <Button   
+                Text="Desistir da Partida"
+                x:Name="desistirPartida"
+                Clicked="btnDesistirPartida" 
+                IsEnabled="False"
+                />
 
 
 

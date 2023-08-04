@@ -9,6 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Maui.Graphics;
 
 namespace JogoDaVelha;
 
@@ -16,15 +17,16 @@ public partial class MainPage : ContentPage
 {
     private TcpClient cliente = new TcpClient();
     Thread tipoThread;
+    static String simbolo;
     static String x;
     static String y;
     private String tpPartida;
+    private CancellationTokenSource cancellationTokenSource;
     public MainPage()
     {
         InitializeComponent();
     }
-
-    private void BtnConectarPartidaPublica(object sender, EventArgs e)
+    public void BtnConectarPartidaPublica(object sender, EventArgs e)
     {
         //count++;
 
@@ -60,7 +62,25 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void BtnPartidaPrivada(object sender, EventArgs e)
+    public void AtualizarLabel(String mensagem)
+    {
+        Device.InvokeOnMainThreadAsync(() =>
+        {
+            JogoVelha.Text = mensagem;
+            
+        });
+    }
+
+    public void AtualizarButton(Button button, String simbolo)
+    {
+        Device.InvokeOnMainThreadAsync(() =>
+        {
+            button.Text = simbolo;
+            button.TextColor = Microsoft.Maui.Graphics.Color.Parse("White");
+        });
+    }
+
+    public void BtnPartidaPrivada(object sender, EventArgs e)
     {
         try
         {
@@ -77,12 +97,12 @@ public partial class MainPage : ContentPage
         }
         catch
         {
-            JogoVelha.Text = "Ouve algum problema no servidor";
+            AtualizarLabel("Ouve algum problema no servidor");
         }
 
     }
 
-    private void BtnEntrarPrivada(object sender, EventArgs e)
+    public void BtnEntrarPrivada(object sender, EventArgs e)
     {
         try
         {
@@ -102,30 +122,32 @@ public partial class MainPage : ContentPage
             }
             else
             {
-                JogoVelha.Text = "Digite o código da partida";
+                AtualizarLabel("Gigite o código da partida");
             }
 
         }
         catch
         {
-            JogoVelha.Text = "Ouve algum problema no servidor";
+            AtualizarLabel("Ouve algum problema no servidor");
         }
 
     }
-    private void OnEntryTextChanged(object sender, EventArgs e)
+    public void OnEntryTextChanged(object sender, EventArgs e)
     {
 
 
     }
 
 
-    private void OnEntryNumPrivada(object sender, EventArgs e)
+    public void OnEntryNumPrivada(object sender, EventArgs e)
     {
 
     }
 
-    private void escuta()
+    public void escuta()
     {
+
+
 
 
         NetworkStream sockStream = cliente.GetStream();
@@ -140,7 +162,143 @@ public partial class MainPage : ContentPage
             //sw.WriteLine(txtCodPartida.Text);
             sw.Flush();
             mensagem = sr.ReadLine();
+            if (mensagem.Equals("Codigo da partida invalido!"))
+            {
+                AtualizarLabel(mensagem);
+                cliente.Close();
+                cliente = new TcpClient();
+                CounterBtn.IsEnabled = true;
+                CounterBtn.IsVisible = true;
+                btnEntrarPartida.IsEnabled = true;
+                btnEntrarPartida.IsEnabled = true;
+                btnPrivada.IsEnabled = true;
+                txtCodPartida.IsEnabled = true;
+                return;
+            }
+        }
+        else
+        {
+            mensagem = sr.ReadLine();
+        }
+        Console.WriteLine("Recebeu do servidor: " + mensagem);
+        AtualizarLabel(mensagem);
+        while (true)
+        {
+            mensagem = sr.ReadLine();
+            Console.WriteLine("Recebeu do servidor2: " + mensagem);
+            if (mensagem.Equals("0a"))
+            {
+                MainPage.simbolo = sr.ReadLine();
+                if (MainPage.simbolo.Equals("X"))
+                {
+                    Device.InvokeOnMainThreadAsync(() =>
+                    {
+                        desistirPartida.IsEnabled = true;
+
+                    });
+                    AtualizarLabel("Partida iniciada! Realize uma jogada");
+                }
+                else
+                {
+                    AtualizarLabel("Partida iniciada! Aguarde a sua vez!");
+                }
+            }
+            else if (mensagem.Equals("1a"))
+            {
+                String x1 = sr.ReadLine();
+
+                String y1 = sr.ReadLine();
+                Button btn = this.FindByName<Button>("btn" + x1 + y1);
+
+                if(MainPage.simbolo.Equals("X"))
+                {
+                    AtualizarButton(btn, "O");
+                }
+                else
+                {
+                    AtualizarButton(btn, "X");
+                }
+                AtualizarLabel("Sua vez de jogar!!!");
+            }
+            else if (mensagem.Equals("OK!"))
+            {
+                Button btn = this.FindByName<Button>("btn" + x + y);
+                AtualizarButton(btn, simbolo);
+                AtualizarLabel("Jogada realizada com sucesso!");
+            }
+            else if (mensagem.Equals("2a"))
+            {
+                AtualizarLabel("Seu adversário desistiu! Você venceu!!!");
+                break;
+            }
+            else if (mensagem.Equals("3a"))
+            {
+                String simboloVencedor = sr.ReadLine();
+                if (simboloVencedor.Equals(simbolo))
+                {
+                    AtualizarLabel("Você venceu !");
+                }
+                else
+                {
+                    String x1 = sr.ReadLine();
+                    String y1 = sr.ReadLine();
+
+                    Button btn = this.FindByName<Button>("btn" + x1 + y1);
+                    AtualizarButton(btn, simboloVencedor);
+                    AtualizarLabel("Você perdeu !");
+                }
+                break;
+            }
+            else if (mensagem.Equals("4a"))
+            {
+                String simboloUltimaJogada = sr.ReadLine();
+                if (!simboloUltimaJogada.Equals(simbolo))
+                {
+                    //recebendo x
+                    String x1 = sr.ReadLine();
+                    //recebendo y
+                    String y1 = sr.ReadLine();
+
+                    Button btn = this.FindByName<Button>("btn" + x1 + y1);
+                    AtualizarButton(btn, simboloUltimaJogada);
+                }
+                AtualizarLabel("Jogo empatado!!!!");
+
+                break;
+            }
+            else
+            {
+                AtualizarLabel(mensagem);
+            }
         }
     }
+    private void btn00_Click(object sender, EventArgs e)
+    {
+        Button btn = (Button)sender;
+        x = btn.StyleId[3].ToString();
+        y = btn.StyleId[4].ToString();
+        NetworkStream sockStream = cliente.GetStream();
+        StreamWriter sw = new StreamWriter(sockStream);
+        StreamReader sr = new StreamReader(sockStream);
+        sw.WriteLine("1a");
+        sw.WriteLine(x);
+        sw.WriteLine(y);
+        sw.Flush();
+
+    }
+
+
+    public void btnDesistirPartida(object sender, EventArgs e)
+    {
+        NetworkStream sockStream = cliente.GetStream();
+        StreamWriter sw = new StreamWriter(sockStream);
+        StreamReader sr = new StreamReader(sockStream);
+        sw.WriteLine("2a");
+        sw.Flush();
+        AtualizarLabel("Voce desistiu da partida");
+        cliente.Close();
+        
+    }
 }
+
 

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj": {}
+    "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj": {
+    "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
+        "projectUniqueName": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
         "projectName": "JogoDaVelha",
-        "projectPath": "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
+        "projectPath": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\obj\\",
+        "outputPath": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [

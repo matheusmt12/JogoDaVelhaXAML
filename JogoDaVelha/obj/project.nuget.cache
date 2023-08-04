@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YLFJCFBWwH2DweIAcMJ0WF9F8Q6jCBnpBKLBufgQHryVrouDGXnlC4JJ1LSFFZn9k5NIXznq9epJ9a/GdM5zcQ==",
+  "dgSpecHash": "7QjOBoW1YfgxDimU8KIQd6T3B8gJV0c+A1pVmH4X8neDJnyFmWzaGsmj1WXSKl4jbcbjKOec1k1lWFJxYDyd1w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mathe\\source\\repos\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
+  "projectFilePath": "C:\\Users\\mathe\\OneDrive\\Área de Trabalho\\JogoDaVelha\\JogoDaVelha\\JogoDaVelha.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathe\\.nuget\\packages\\googlegson\\2.9.1.1\\googlegson.2.9.1.1.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",

@@ -15,6 +15,7 @@
             <Label
                 x:Name="JogoVelha" 
                 Text="Jogo da Velha"
+                VerticalOptions="Center"
                 />
 
 

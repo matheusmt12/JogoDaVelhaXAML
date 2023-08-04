@@ -28,6 +28,18 @@ build_metadata.AdditionalFiles.ManifestResourceName = JogoDaVelha.MainPage.xaml
 build_metadata.AdditionalFiles.TargetPath = MainPage.xaml
 build_metadata.AdditionalFiles.RelativePath = MainPage.xaml
 
+[C:/Users/mathe/source/repos/JogoDaVelha/JogoDaVelha/NewContent1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = JogoDaVelha.NewContent1.xaml
+build_metadata.AdditionalFiles.TargetPath = NewContent1.xaml
+build_metadata.AdditionalFiles.RelativePath = NewContent1.xaml
+
+[C:/Users/mathe/source/repos/JogoDaVelha/JogoDaVelha/NewPage1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = JogoDaVelha.NewPage1.xaml
+build_metadata.AdditionalFiles.TargetPath = NewPage1.xaml
+build_metadata.AdditionalFiles.RelativePath = NewPage1.xaml
+
 [C:/Users/mathe/source/repos/JogoDaVelha/JogoDaVelha/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = JogoDaVelha.Resources.Styles.Colors.xaml

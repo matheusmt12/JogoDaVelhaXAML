@@ -15,15 +15,14 @@
 
 
 
-
             <Grid VerticalOptions="Center"
                   MaximumWidthRequest="500"
                   ColumnSpacing="10"
                   RowSpacing="10"
                   >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
+                    <ColumnDefinition Width="2"/>
+                    <ColumnDefinition Width="4"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition  />
